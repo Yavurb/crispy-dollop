@@ -10,7 +10,7 @@ const loadScalars = (): object => {
     if (file !== 'index.ts') {
       const name: string = file.split('.')[0];
       const { default:customScalar } = require(`./${file}`);
-      
+
       scalars[name] = customScalar;
     }
   })
