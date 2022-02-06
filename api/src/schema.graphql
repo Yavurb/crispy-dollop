@@ -1,0 +1,53 @@
+scalar DateTime
+
+type Query {
+  find: [Avo!]!
+  findById(id: ID!): Avo
+}
+
+type Mutation {
+  addAvocado(data: AvocadoInput): Avo
+}
+
+#** Interfaces
+
+interface BaseFields {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  deletedAt: DateTime
+}
+
+#** Types
+
+type Avo implements BaseFields {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  deletedAt: DateTime
+  name: String!
+  price: Float!
+  sku: String!
+  image: String!
+  description: String!
+  attributes: Attributes
+}
+
+type Attributes {
+  shape: String
+  hardiness: String
+  taste: String
+}
+
+#** Inputs
+
+input AvocadoInput {
+  name: String!
+  price: Float!
+  image: String!
+  description: String!
+  sku: String!
+  shape: String
+  hardiness: String
+  taste: String
+}
